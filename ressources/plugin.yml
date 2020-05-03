@@ -1,0 +1,15 @@
+name: FactionCombat
+version: 1.0.0
+author: Dams333
+main: ch.dams333.factionCombat.FactionCombat
+api-version: 1.13
+commands:
+  open:
+    description: Permet d ouvrir un combat
+    permission: factionCombat.commands.admin.open
+  start:
+    description: Permet de demarrer le combat en cours
+    permission: factionCombat.commands.admin.start
+  join:
+    description: Permet de rejoindre le combat en cours
+    permission: factionCombat.commands.player.join

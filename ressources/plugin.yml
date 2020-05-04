@@ -13,3 +13,6 @@ commands:
   join:
     description: Permet de rejoindre le combat en cours
     permission: factionCombat.commands.player.join
+  cancel:
+    description: Permet d arreter le combat en cours
+    permission: factionCombat.commands.admin.stop

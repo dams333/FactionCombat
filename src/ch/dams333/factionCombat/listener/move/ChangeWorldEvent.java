@@ -16,9 +16,11 @@ public class ChangeWorldEvent implements Listener {
         if(main.isWorldOfCombat(e.getFrom().getWorld())){
             if(e.getFrom().getWorld() != e.getTo().getWorld()){
                 if(main.savedPlayers.keySet().contains(e.getPlayer())){
-                    main.savedPlayers.get(e.getPlayer()).apply(e.getPlayer());
-                    main.savedPlayers.remove(e.getPlayer());
-                    main.game.removePlayer(e.getPlayer());
+                    if(main.savedPlayers.get(e.getPlayer()) != null) {
+                        main.savedPlayers.get(e.getPlayer()).apply(e.getPlayer());
+                        main.savedPlayers.remove(e.getPlayer());
+                        main.game.removePlayer(e.getPlayer());
+                    }
                 }
             }
         }

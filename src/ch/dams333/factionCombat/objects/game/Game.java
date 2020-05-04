@@ -16,6 +16,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Game {
@@ -81,8 +82,9 @@ public class Game {
     }
 
     public void join(Player p) {
+        p.getInventory().clear();
         p.teleport(spec);
-        p.sendMessage(ChatColor.GOLD + "Vous avez bien rejoint le combat, veuillez attendre que celui-ci démarre");
+        p.sendMessage(ChatColor.GOLD + "Vous avez bien rejoint l'event PvP, veuillez attendre que celui-ci démarre");
         p.setGameMode(GameMode.ADVENTURE);
         this.joined.add(p);
     }
@@ -155,7 +157,7 @@ public class Game {
         }
         this.inGame.remove(p);
         p.getInventory().clear();
-        p.setGameMode(GameMode.SPECTATOR);
+        p.teleport(this.spec);
         checkWin(main);
     }
 
@@ -200,5 +202,13 @@ public class Game {
         p.getInventory().clear();
         p.setGameMode(GameMode.SPECTATOR);
         checkWin(main);
+    }
+
+    public void stop(FactionCombat main) {
+        for(Player p : main.savedPlayers.keySet()){
+            main.savedPlayers.get(p).apply(p);
+        }
+        main.savedPlayers = new HashMap<>();
+        main.game = null;
     }
 }

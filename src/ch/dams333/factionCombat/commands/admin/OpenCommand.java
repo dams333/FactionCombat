@@ -38,7 +38,7 @@ public class OpenCommand implements CommandExecutor {
                                         p.sendMessage(ChatColor.DARK_GREEN + "La game est ouverte");
 
                                         for(Player online : Bukkit.getOnlinePlayers()){
-                                            online.sendMessage(ChatColor.LIGHT_PURPLE + "Un combat a été ouvert. " + ChatColor.BOLD + "/join" + ChatColor.RESET + "" + ChatColor.LIGHT_PURPLE + " pour le rejoindre");
+                                            online.sendMessage(ChatColor.LIGHT_PURPLE + "L'event PvP est à présent ouvert. Faîtes " + ChatColor.BOLD + "/join" + ChatColor.RESET + "" + ChatColor.LIGHT_PURPLE + " pour y participer !");
                                         }
 
                                         return true;

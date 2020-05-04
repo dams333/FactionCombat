@@ -1,5 +1,6 @@
 package ch.dams333.factionCombat;
 
+import ch.dams333.factionCombat.commands.admin.CancelCommand;
 import ch.dams333.factionCombat.commands.admin.OpenCommand;
 import ch.dams333.factionCombat.commands.admin.StartCommand;
 import ch.dams333.factionCombat.commands.player.JoinCommand;
@@ -20,12 +21,14 @@ import java.util.Map;
 
 public class FactionCombat extends JavaPlugin {
 
-    public Map<Player, SavedPlayer> savedPlayers = new HashMap<>();
+    public Map<Player, SavedPlayer> savedPlayers;
 
     public Game game = null;
 
     @EventHandler
     public void onEnable(){
+
+        this.savedPlayers = new HashMap<>();
 
         getServer().getPluginManager().registerEvents(new QuitEvent(this), this);
         getServer().getPluginManager().registerEvents(new ChangeWorldEvent(this), this);
@@ -36,6 +39,7 @@ public class FactionCombat extends JavaPlugin {
         getCommand("open").setExecutor(new OpenCommand(this));
         getCommand("join").setExecutor(new JoinCommand(this));
         getCommand("start").setExecutor(new StartCommand(this));
+        getCommand("cancel").setExecutor(new CancelCommand(this));
 
         System.out.println("[FactionCombat] Systeme de combat par Dams33 chargé avec succès");
 

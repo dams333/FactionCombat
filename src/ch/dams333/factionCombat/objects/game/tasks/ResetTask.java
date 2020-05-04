@@ -4,6 +4,7 @@ import ch.dams333.factionCombat.FactionCombat;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class ResetTask extends BukkitRunnable {
@@ -22,10 +23,10 @@ public class ResetTask extends BukkitRunnable {
         if(timer == 0){
             for(Player p : main.savedPlayers.keySet()){
                 main.savedPlayers.get(p).apply(p);
-                main.savedPlayers.remove(p);
-                main.game = null;
                 cancel();
             }
+            main.savedPlayers = new HashMap<>();
+            main.game = null;
         }
     }
 }

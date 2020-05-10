@@ -156,6 +156,7 @@ public class Game {
             inGame.sendMessage(p.getDisplayName() + ChatColor.RED + " est mort !");
         }
         this.inGame.remove(p);
+        p.setGameMode(GameMode.ADVENTURE);
         p.getInventory().clear();
         p.teleport(this.spec);
         checkWin(main);
@@ -199,13 +200,15 @@ public class Game {
             inGame.sendMessage(p.getDisplayName() + ChatColor.RED + " est mort de la main de " + damager.getDisplayName() + ChatColor.RED + " !");
         }
         this.inGame.remove(p);
+        p.setGameMode(GameMode.ADVENTURE);
         p.getInventory().clear();
-        p.setGameMode(GameMode.SPECTATOR);
+        p.teleport(this.spec);
         checkWin(main);
     }
 
     public void stop(FactionCombat main) {
         for(Player p : main.savedPlayers.keySet()){
+            p.sendMessage(ChatColor.RED + "L'event PvP a été annulé");
             main.savedPlayers.get(p).apply(p);
         }
         main.savedPlayers = new HashMap<>();

@@ -15,9 +15,11 @@ public class QuitEvent implements Listener {
     public void quit(PlayerQuitEvent e){
         if(main.isInGanme(e.getPlayer())){
             if(main.savedPlayers.keySet().contains(e.getPlayer())){
-                main.savedPlayers.get(e.getPlayer()).apply(e.getPlayer());
-                main.savedPlayers.remove(e.getPlayer());
-                main.game.removePlayer(e.getPlayer());
+                if(main.savedPlayers.get(e.getPlayer()) != null) {
+                    main.savedPlayers.get(e.getPlayer()).apply(e.getPlayer());
+                    main.savedPlayers.remove(e.getPlayer());
+                    main.game.removePlayer(e.getPlayer());
+                }
             }
         }
     }

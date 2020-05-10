@@ -24,6 +24,7 @@ public class OpenCommand implements CommandExecutor {
             if(main.game == null) {
                 if (args.length == 9) {
                     String worldName = args[0];
+                    p.sendMessage(ChatColor.LIGHT_PURPLE + "Le monde va se charger, le serveur peut lager quelques secondes");
                     new WorldCreator(worldName).createWorld();
                     if (Bukkit.getWorld(worldName) != null) {
                         if (isInt(args[1])) {
